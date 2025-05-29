@@ -1,11 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $epicText = "وقتی چایی سرد میشه و روش آب جوش میریزی درسته گرم میشه ولی کم رنگ تر میشه.";
+    return view('welcome', compact('epicText'));
 });
 
 Route::get('/dashboard', function () {
@@ -21,11 +22,5 @@ Route::middleware('auth')->group(function () {
 // روت‌های ورود با گوگل
 Route::get('/auth/google', [SocialiteController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
-Route::get('/test-email', function() {
-    Mail::to('test@example.com')->send(new \App\Mail\TestMail());
-    return 'Email sent!';
-
-});
-
 
 require __DIR__.'/auth.php';
