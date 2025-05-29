@@ -35,7 +35,7 @@
         .hero-buttons {
             display: flex;
             gap: 20px;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         .btn {
@@ -56,6 +56,25 @@
             border-color: #ffffff80;
         }
 
+        .icon-btn {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .google-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .google-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(255,0,0,0.5);
+        }
+
         @media screen and (max-width: 600px) {
             .hero-buttons {
                 flex-direction: column;
@@ -73,7 +92,12 @@
 
 <div class="hero">
     <div class="hero-buttons">
-        <a href="{{ route('register') }}" class="btn">Register</a>
+        <!-- دکمه آیکون گوگل -->
+        <a href="{{ route('google.login') }}" class="icon-btn">
+            <img src="{{ asset('images/google.png') }}" alt="Login with Google" class="google-icon">
+        </a>
+
+        <!-- دکمه متن‌دار عادی برای لاگین -->
         <a href="{{ route('login') }}" class="btn">Login</a>
     </div>
 </div>
